@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %}</title>
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7b/Django_%28Logo%29.png" type="image/x-icon">
+    <!-- Fuentes y origenes de la pag: -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %">
+</head>
+<body class="text-center">
+    <!-- Menu -->
+    {% block contenido %}{% endblock %}
+
+    <script src="{% static 'js/bootstrap.js' %"></script>
+</body>
+</html>
