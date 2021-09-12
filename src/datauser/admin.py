@@ -2,7 +2,7 @@ import datauser
 from django.contrib import admin
 
 # Register your models here.
-from .models import DatosPersonales, Habilidades
+from .models import DatosPersonales, Habilidades, Perfil
 
 
 # Matriculamos el módulo - Modelo:
@@ -16,3 +16,4 @@ class DatosPersonalesModel(admin.ModelAdmin):
 
 admin.site.register(DatosPersonales)
 admin.site.register(Habilidades)
+admin.site.register(Perfil)

@@ -40,5 +40,19 @@ class Habilidades(models.Model):
 class Servicios(models.Model):
     pass
 
+class Perfil(models.Model):
+    identidy_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = CASCADE, verbose_name= "NickName")
+    profesion_user = models.CharField(verbose_name='Profesión', max_length=100)
+    perfil_user = models.TextField(verbose_name="Perfil Profesional", max_length=5000)
+    creado_el = models.DateTimeField(verbose_name="Creado el", auto_now=True)
+    modificado_el = models.DateTimeField(verbose_name="Modificado el", auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Perfil de Usuario'
+        verbose_name_plural = 'Perfil de Usuario'
+
+    def __str__(self) -> str:
+        return self.profesion_user
+
     
 
