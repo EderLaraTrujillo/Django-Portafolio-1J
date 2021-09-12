@@ -127,6 +127,7 @@ STATIC_URL = '/static/'
 
 # Variable para mis archivos de imagenes: (solo para debug=on)
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "src/static/media")
 
 # Statics en todas las apps:
 STATICFILES_DIRS = (
