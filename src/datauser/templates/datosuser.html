@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Registrar Datos de Usuario {% endblock %}
+
+{% block contenido %}
+    {% load static %}
+
+    <section class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-7">
+                <h2 class="text-primary text-center mb-3 mt-3">Adicionar Datos de Usuario</h2>
+                <form action="" method="post">
+                    {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col">
+                        <label for="formGroupExampleInput" class="form-label">Usuario</label>
+                        {{ formulario.identidy_user }}
+                    </div>
+                    <div class="col">
+                        <label for="formGroupExampleInput" class="form-label">Teléfono</label>
+                        {{ formulario.telefono_user }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Perfil</label>
+                    {{ formulario.describe_user }}
+                </div>
+                <div class="col">
+                    <label for="formGroupExampleInput" class="form-label">LinkedIn URL:</label>
+                    {{ formulario.linkedind_lnk }}
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-primary btn-lg col-6 offset-md-6">Registrar Nuevo</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
