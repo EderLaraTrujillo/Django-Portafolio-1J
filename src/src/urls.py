@@ -22,6 +22,9 @@ from django.conf import settings
 urlpatterns = [
     path('', include('datauser.urls')),
     path('admin/', admin.site.urls),
+    # urls de autenticación:
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('registration.urls'))
 ]
 
 # Adicionar configuración de debug:
