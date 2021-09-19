@@ -1,4 +1,7 @@
 from django.db import models
+# Importar CKEditor:}
+from ckeditor.fields import RichTextField
+# Luego de importar, modificar en el campo del modelo donde se quiere implementar:
 from django.db.models.deletion import CASCADE
 # Usar foraneas de las tablas de django:
 from django.conf import settings
@@ -8,11 +11,12 @@ from django.conf import settings
 class DatosPersonales(models.Model):
     # Atributos de la clase:
     identidy_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=CASCADE, verbose_name="NickName")
+    profesion_user = models.CharField(verbose_name='Profesión', max_length=100, null=True)
     telefono_user = models.CharField(verbose_name="Telefono Usuario", max_length = 25, blank=True)
-    describe_user = models.TextField(verbose_name="Perfil del Usuario", blank=True)
+    describe_user = RichTextField(verbose_name="Perfil del Usuario", blank=True) # Edición de campo para usar texto enriquecido
     linkedind_lnk = models.URLField(verbose_name="Url LinkedIn")
-    creado_el = models.DateTimeField(verbose_name="Creado el", auto_now=True)
-    modificado_el = models.DateTimeField(verbose_name="Modificado el", auto_now_add=True)
+    creado_el = models.DateTimeField(verbose_name="Creado el", auto_now_add=True)
+    modificado_el = models.DateTimeField(verbose_name="Modificado el", auto_now=True)
 
     class Meta:
         verbose_name = "Datos del Usuario"
@@ -27,8 +31,8 @@ class Habilidades(models.Model):
     nombre_habilidad = models.CharField(verbose_name = "Habilidad", max_length = 100)
     porcen_habilidad = models.DecimalField(max_digits = 3, decimal_places = 1, verbose_name= "Porcentaje de Habilidad")
     status_habilidad = models.BooleanField(verbose_name= "Estado de Habilidad", default = True)
-    creado_el = models.DateTimeField(verbose_name="Creado el", auto_now=True)
-    modificado_el = models.DateTimeField(verbose_name="Modificado el", auto_now_add=True)
+    creado_el = models.DateTimeField(verbose_name="Creado el", auto_now_add=True)
+    modificado_el = models.DateTimeField(verbose_name="Modificado el", auto_now=True)
 
     class Meta:
         verbose_name = "Habilidad del Usuario"
@@ -40,19 +44,6 @@ class Habilidades(models.Model):
 class Servicios(models.Model):
     pass
 
-class Perfil(models.Model):
-    identidy_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = CASCADE, verbose_name= "NickName")
-    profesion_user = models.CharField(verbose_name='Profesión', max_length=100)
-    perfil_user = models.TextField(verbose_name="Perfil Profesional", max_length=5000)
-    creado_el = models.DateTimeField(verbose_name="Creado el", auto_now=True)
-    modificado_el = models.DateTimeField(verbose_name="Modificado el", auto_now_add=True)
-
-    class Meta:
-        verbose_name = 'Perfil de Usuario'
-        verbose_name_plural = 'Perfil de Usuario'
-
-    def __str__(self) -> str:
-        return self.profesion_user
 
     
 

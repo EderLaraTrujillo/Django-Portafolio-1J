@@ -1,4 +1,5 @@
 from django import forms
+# from ckeditor.widgets import CKEditorWidget
 
 # Cree sus formularios aquí:
 class DatosUsers(forms.Form):

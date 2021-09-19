@@ -1,7 +1,6 @@
 from django.apps import AppConfig
 
 
-class DatauserConfig(AppConfig):
+class RegistrationConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'datauser'
-    verbose_name = 'Datos de Usuario'
+    name = 'registration'

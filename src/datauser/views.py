@@ -1,7 +1,12 @@
 from django.shortcuts import render, HttpResponse   # Paquete para Vistas basadas en funciones
 from django.views.generic.base import TemplateView  # Paquete para Vistas basadas en clases
+
+# Importamos los modelos:
+from .models import DatosPersonales, Habilidades # Eliminamos la tabla Perfil
+
 # Importamos formularios:
 from .forms import DatosUsers
+from ckeditor.widgets import CKEditorWidget
 
 # Create your views here.
 # Vistas basadas en clases:
@@ -11,11 +16,11 @@ class HomePageView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {
-            'titulo':'Portafolios',
-            'mensaje':'Ten acceso a los perfiles, mas solicitados y preparados del momento.',
-            'pregunta': '¿Qué esperas para empezar?',
-            'boton': 'Registrate!'
-        })
+                    'titulo':'Portafolios',
+                    'mensaje':'Ten acceso a los perfiles, mas solicitados y preparados del momento.',
+                    'pregunta': '¿Qué esperas para empezar?',
+                    'boton': 'Registrate!'
+                })
 
 # Vista para el inicio de sesion:
 class LoginPageView(TemplateView):
@@ -24,8 +29,9 @@ class LoginPageView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
-def DatosPageView(request):
-    template_name = 'datosuser.html'
+class DatosPageView(TemplateView):
     formulario = DatosUsers()
+    template_name = 'datosuser.html'
 
-    return render(request, template_name, {'formulario':formulario})
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'formulario': self.formulario})
